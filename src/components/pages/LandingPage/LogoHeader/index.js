@@ -1,7 +1,7 @@
 import React from "react";
 
 //SVG import
-import { ReactComponent as Logo } from "../../../../images/logo-horizontal.svg";
+import { ReactComponent as Logo } from "../../../../images/logo-vertical.svg";
 
 //styled-components imports
 import Wrapper from "./Wrapper";

@@ -1,8 +1,8 @@
 const forgottenPasswordReducer = (state = false, action) => {
   switch (action.type) {
-    case "OPEN":
+    case "OPEN_FORGOTTEN_PASSWORD":
       return true;
-    case "CLOSE":
+    case "CLOSE_FORGOTTEN_PASSWORD":
       return false;
     default:
       return state;

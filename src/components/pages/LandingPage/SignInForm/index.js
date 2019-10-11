@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 //action import
-import { open } from "../../../../store/actions/forgottenPasswordActions";
+import { openForgottenPassword } from "../../../../store/actions/forgottenPasswordActions";
 
 //custom hook import
 import useForm from "../../../../hooks/useForm";
@@ -47,42 +47,44 @@ const SignInForm = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit} noValidate>
-      <InputField
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={values.email}
-        onChange={handleChange}
-        error={errors.email}
-      />
-      {errors.email && <FormErrorMessage>{errors.email}</FormErrorMessage>}
-      <InputField
-        type="password"
-        name="password"
-        placeholder="Heslo"
-        value={values.password}
-        onChange={handleChange}
-        marginBottom="8px"
-        error={errors.password}
-      />
-      {errors.password && (
-        <FormErrorMessage>{errors.password}</FormErrorMessage>
-      )}
-      <PasswordText
-        onClick={() => {
-          dispatch(open());
-        }}
-      >
-        Zapomněl jsi heslo?
-      </PasswordText>
-      <Button type="submit">Přihlásit se</Button>
-      <SignUpText>
-        Ještě nemáš účet?{" "}
-        <StyledFormLink to="/sign-up">Zaregistruj se</StyledFormLink>
-      </SignUpText>
+    <>
+      <Form onSubmit={handleSubmit} noValidate>
+        <InputField
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={values.email}
+          onChange={handleChange}
+          error={errors.email}
+        />
+        {errors.email && <FormErrorMessage>{errors.email}</FormErrorMessage>}
+        <InputField
+          type="password"
+          name="password"
+          placeholder="Heslo"
+          value={values.password}
+          onChange={handleChange}
+          marginBottom="8px"
+          error={errors.password}
+        />
+        {errors.password && (
+          <FormErrorMessage>{errors.password}</FormErrorMessage>
+        )}
+        <PasswordText
+          onClick={() => {
+            dispatch(openForgottenPassword());
+          }}
+        >
+          Zapomněl jsi heslo?
+        </PasswordText>
+        <Button type="submit">Přihlásit se</Button>
+        <SignUpText>
+          Ještě nemáš účet?{" "}
+          <StyledFormLink to="/sign-up">Zaregistruj se</StyledFormLink>
+        </SignUpText>
+      </Form>
       {isFpOpen ? <ForgottenPasswordModal /> : null}
-    </Form>
+    </>
   );
 };
 
