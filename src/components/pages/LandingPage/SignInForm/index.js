@@ -53,7 +53,7 @@ const SignInForm = () => {
           type="email"
           name="email"
           placeholder="Email"
-          value={values.email}
+          value={values.email || ""}
           onChange={handleChange}
           error={errors.email}
         />
@@ -62,7 +62,7 @@ const SignInForm = () => {
           type="password"
           name="password"
           placeholder="Heslo"
-          value={values.password}
+          value={values.password || ""}
           onChange={handleChange}
           marginBottom="8px"
           error={errors.password}

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const ModalWrapper = styled.div`
   z-index: 99;
   position: fixed;
   top: 0;
@@ -10,4 +10,4 @@ const Wrapper = styled.div`
   background: rgba(0, 0, 0, 0.6);
 `;
 
-export default Wrapper;
+export default ModalWrapper;

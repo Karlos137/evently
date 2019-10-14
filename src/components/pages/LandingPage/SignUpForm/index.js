@@ -16,8 +16,8 @@ const SignUpForm = () => {
     submit,
     validate
   );
-  //need to be function declarations, because of hoisting
 
+  //need to be function declarations, because of hoisting (or move up above useForm())
   function validate(values) {
     let errors = {};
 
@@ -57,7 +57,7 @@ const SignUpForm = () => {
         type="text"
         name="name"
         placeholder="Jméno"
-        value={values.name}
+        value={values.name || ""}
         onChange={handleChange}
         error={errors.name}
       />
@@ -66,7 +66,7 @@ const SignUpForm = () => {
         type="email"
         name="email"
         placeholder="Email"
-        value={values.email}
+        value={values.email || ""}
         onChange={handleChange}
         error={errors.email}
       />
@@ -75,7 +75,7 @@ const SignUpForm = () => {
         type="password"
         name="password"
         placeholder="Heslo"
-        value={values.password}
+        value={values.password || ""}
         onChange={handleChange}
         error={errors.password}
       />
@@ -86,7 +86,7 @@ const SignUpForm = () => {
         type="password"
         name="passwordConfirmation"
         placeholder="Potvrzení hesla"
-        value={values.passwordConfirmation}
+        value={values.passwordConfirmation || ""}
         onChange={handleChange}
         error={errors.passwordConfirmation}
       />

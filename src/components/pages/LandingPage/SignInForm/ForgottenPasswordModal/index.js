@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 //action import
-import { close } from "../../../../../store/actions/forgottenPasswordActions";
+import { closeForgottenPassword } from "../../../../../store/actions/forgottenPasswordActions";
 
 //custom hook import
 import useForm from "../../../../../hooks/useForm";
@@ -11,10 +11,10 @@ import useForm from "../../../../../hooks/useForm";
 import InputField from "../../../../../shared-styled-components/InputField";
 import Button from "../../../../../shared-styled-components/Button";
 import FormErrorMessage from "../../../../../shared-styled-components/FormErrorMessage";
-import StyledCloseIcon from "./StyledCloseIcon";
-import Wrapper from "./Wrapper";
-import Modal from "./Modal";
-import Title from "./Title";
+import ModalCloseIcon from "../../../../../shared-styled-components/ModalCloseIcon";
+import ModalWrapper from "../../../../../shared-styled-components/ModalWrapper";
+import Modal from "../../../../../shared-styled-components/Modal";
+import ModalTitle from "../../../../../shared-styled-components/ModalTitle";
 import Text from "./Text";
 import Form from "./Form";
 
@@ -41,20 +41,20 @@ const ForgottenPasswordModal = () => {
   }
 
   return (
-    <Wrapper
+    <ModalWrapper
       id="close"
       onClick={e => {
         //only close when clicking on this element
         if (e.target.id === "close") {
-          dispatch(close());
+          dispatch(closeForgottenPassword());
         }
       }}
     >
       <Modal>
-        <Title>Zapomenuté heslo?</Title>
-        <StyledCloseIcon
+        <ModalTitle>Zapomenuté heslo?</ModalTitle>
+        <ModalCloseIcon
           onClick={() => {
-            dispatch(close());
+            dispatch(closeForgottenPassword());
           }}
         />
         <Text>
@@ -66,7 +66,7 @@ const ForgottenPasswordModal = () => {
           <InputField
             type="email"
             name="email"
-            value={values.email}
+            value={values.email || ""}
             onChange={handleChange}
             error={errors.email}
             placeholder="Email"
@@ -75,7 +75,7 @@ const ForgottenPasswordModal = () => {
           <Button>Odeslat</Button>
         </Form>
       </Modal>
-    </Wrapper>
+    </ModalWrapper>
   );
 };
 

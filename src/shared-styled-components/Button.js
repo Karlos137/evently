@@ -9,6 +9,7 @@ const Button = styled.button`
   background-image: ${props => props.theme.colors.gradients.lightGreenToGreen};
   cursor: pointer;
   border-radius: 2px;
+  margin-top: ${props => props.marginTop || "0px"};
 `;
 
 export default Button;

@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useForm = (callback, validate) => {
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-    name: "",
-    passwordConfirmation: ""
-  });
+  const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -27,7 +22,6 @@ const useForm = (callback, validate) => {
   //handle submit - prevent default on event (refreshing page) & handle errors
   const handleSubmit = e => {
     e.preventDefault();
-    e.stopPropagation();
     setErrors(validate(values));
     setIsSubmit(true);
   };

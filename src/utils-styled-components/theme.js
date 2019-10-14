@@ -13,11 +13,19 @@ const theme = {
     },
     gradients: {
       lightGreenToGreen:
-        "linear-gradient(171.39deg, #00CDAC 0%, #02AAB0 121.5%)"
+        "linear-gradient(171.39deg, #00CDAC 0%, #02AAB0 121.5%)",
+      lightOrangeToOrange:
+        "linear-gradient(157.77deg, #FE7145 0%, #FF4D00 121.5%)",
+      lightBrownToBrown: "linear-gradient(163.6deg, #E9B395 0%, #D3936F 121.5%)"
     },
     main: {
       lightGreen: "#00CDAC",
       green: "#02AAB0"
+    },
+    secondary: {
+      lightBrown: "#E9B395",
+      brown: "#D3936F",
+      lightOrange: "#FE7145"
     }
   },
   fontSizes: {
@@ -26,6 +34,7 @@ const theme = {
     large: "24px"
   },
   mediaQueries: {
+    tablet: "min-widt:h: 768px",
     desktop: "min-width: 1024px"
   }
 };
