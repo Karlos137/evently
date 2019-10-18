@@ -48,14 +48,16 @@ const PhoneNavbar = () => {
         <LogoIconWrapper>
           <LogoIcon
             onClick={() => {
-              setRedirect("/");
+              dispatch(closeMenu());
+              setRedirect("/main");
             }}
           />
         </LogoIconWrapper>
         <UserProfile
           src={avatarMale}
           onClick={() => {
-            setRedirect("profile");
+            dispatch(closeMenu());
+            setRedirect("/profile");
           }}
         />
       </Wrapper>

@@ -7,7 +7,7 @@ import SearchIcon from "./SearchIcon";
 
 const SearchBar = props => {
   return (
-    <Wrapper>
+    <Wrapper modal={props.modal}>
       <SearchIcon />
       <StyledInputField placeholder={props.placeholder} />
     </Wrapper>

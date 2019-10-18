@@ -36,10 +36,10 @@ const InviteGroupsModal = () => {
             dispatch(closeInviteGroups());
           }}
         />
-        <SearchBar placeholder="Hledej skupiny" />
-        <Group invite name="Testing team" />
-        <Group invite name="FunFunFun" />
-        <Group invite name="Developers" />
+        <SearchBar modal placeholder="Hledej skupiny" />
+        <Group modal invite name="Testing team" />
+        <Group modal invite name="FunFunFun" />
+        <Group modal invite name="Developers" />
         <Button>Hotovo</Button>
       </Modal>
     </ModalWrapper>

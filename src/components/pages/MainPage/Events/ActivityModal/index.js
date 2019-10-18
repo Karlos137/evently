@@ -13,7 +13,7 @@ import Modal from "../../../../../shared-styled-components/Modal";
 import ModalTitle from "../../../../../shared-styled-components/ModalTitle";
 import ModalCloseIcon from "../../../../../shared-styled-components/ModalCloseIcon";
 
-//activity imports
+//svg import
 import avatarMale from "../../../../../images/avatar-male.svg";
 
 const ActivityModal = () => {

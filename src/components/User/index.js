@@ -22,7 +22,7 @@ const User = props => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper modal={props.modal}>
       <UserImage src={avatarMale} />
       <TextWrapper>
         <Name>{props.name}</Name>

@@ -16,7 +16,7 @@ const Group = props => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper modal={props.modal}>
       <Name>{props.name}</Name>
       <InviteWrapper onClick={handleClick}>
         {props.invite ? invited ? <CheckIcon /> : <PlusIcon /> : null}

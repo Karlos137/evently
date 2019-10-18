@@ -34,7 +34,7 @@ const theme = {
     large: "24px"
   },
   mediaQueries: {
-    tablet: "min-widt:h: 768px",
+    tablet: "min-width: 768px",
     desktop: "min-width: 1024px"
   }
 };

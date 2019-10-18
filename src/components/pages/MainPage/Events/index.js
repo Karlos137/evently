@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Media from "react-media";
 
 //action import
 import { openActivity } from "../../../../store/actions/activityActions";
@@ -28,11 +29,17 @@ const Events = () => {
           <AddIcon />
         </Link>
       </Heading>
-      <BellIcon
-        onClick={() => {
-          dispatch(openActivity());
-        }}
-      />
+      <Media query="(min-width: 1024px)">
+        {matches =>
+          matches ? null : (
+            <BellIcon
+              onClick={() => {
+                dispatch(openActivity());
+              }}
+            />
+          )
+        }
+      </Media>
       <Tabs />
       {isActivityOpen ? <ActivityModal /> : null}
     </Wrapper>
