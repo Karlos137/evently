@@ -13,7 +13,7 @@ import Day from "./Day";
 import Month from "./Month";
 import Name from "./Name";
 import Users from "./Users";
-import UserImage from "./UserImage";
+import UserImage from "../../shared-styled-components/UserImage";
 import TextMore from "./TextMore";
 
 const EventCard = () => {
@@ -25,9 +25,9 @@ const EventCard = () => {
       </DateInfo>
       <Name>Výlet na Mauricius</Name>
       <Users>
-        <UserImage src={avatarMale} />
-        <UserImage src={avatarMale} />
-        <UserImage src={avatarMale} />
+        <UserImage small src={avatarMale} />
+        <UserImage small src={avatarMale} />
+        <UserImage small src={avatarMale} />
       </Users>
       <TextMore>+12</TextMore>
     </Wrapper>

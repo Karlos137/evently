@@ -6,6 +6,7 @@ const EditIcon = styled(Edit)`
   height: 24px;
   color: ${props => props.theme.colors.text.grey};
   margin-right: 16px;
+  cursor: pointer;
 `;
 
 export default EditIcon;

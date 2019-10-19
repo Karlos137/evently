@@ -16,6 +16,7 @@ import ProfilePage from "../pages/ProfilePage";
 import UsersPage from "../pages/UsersPage";
 import GroupsPage from "../pages/GroupsPage";
 import GroupPage from "../pages/GroupPage";
+import EventPage from "../pages/EventPage";
 import CreateGroupPage from "../pages/CreateGroupPage";
 import CreateEventPage from "../pages/CreateEventPage";
 
@@ -53,6 +54,10 @@ const App = () => {
           <Route path="/group/:id">
             <Navbar />
             <GroupPage />
+          </Route>
+          <Route path="/event/:id">
+            <Navbar />
+            <EventPage />
           </Route>
         </Switch>
       </BrowserRouter>
