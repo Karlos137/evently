@@ -16,7 +16,9 @@ const theme = {
         "linear-gradient(171.39deg, #00CDAC 0%, #02AAB0 121.5%)",
       lightOrangeToOrange:
         "linear-gradient(157.77deg, #FE7145 0%, #FF4D00 121.5%)",
-      lightBrownToBrown: "linear-gradient(163.6deg, #E9B395 0%, #D3936F 121.5%)"
+      lightBrownToBrown:
+        "linear-gradient(163.6deg, #E9B395 0%, #D3936F 121.5%)",
+      lightRedToRed: "linear-gradient(135.55deg, #F86A70 0%, #F56067 121.5%)"
     },
     main: {
       lightGreen: "#00CDAC",

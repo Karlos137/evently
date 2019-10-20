@@ -6,13 +6,15 @@ import menuReducer from "./menuReducer";
 import activityReducer from "./activityReducer";
 import inviteUsersReducer from "./inviteUsersReducer";
 import inviteGroupsReducer from "./inviteGroupsReducer";
+import deleteReducer from "./deleteReducer";
 
 const rootReducer = combineReducers({
   forgottenPasswordReducer,
   menuReducer,
   activityReducer,
   inviteUsersReducer,
-  inviteGroupsReducer
+  inviteGroupsReducer,
+  deleteReducer
 });
 
 export default rootReducer;

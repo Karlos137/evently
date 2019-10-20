@@ -1,6 +1,7 @@
 import React from "react";
 import Media from "react-media";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 //react component import
 import CreateEventForm from "./CreateEventForm";
@@ -20,13 +21,17 @@ const CreateEventPage = () => {
   const isInviteUsersOpen = useSelector(state => state.inviteUsersReducer);
   const isInviteGroupsOpen = useSelector(state => state.inviteGroupsReducer);
 
+  const location = useLocation();
+
   return (
     <Wrapper>
       <Media query="(min-width: 1024px)">
         {matches => (matches ? <CreateEventIlu src={createEventIlu} /> : null)}
       </Media>
       <ContentWrapper>
-        <Heading>Vytvořit událost</Heading>
+        <Heading>
+          {location.state ? "Upravit událost" : "Vytvořit událost"}
+        </Heading>
         <CreateEventForm />
         {isInviteUsersOpen ? <InviteUsersModal /> : null}
         {isInviteGroupsOpen ? <InviteGroupsModal /> : null}

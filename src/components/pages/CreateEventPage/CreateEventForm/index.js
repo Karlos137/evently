@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 //actions import
 import { openInviteUsers } from "../../../../store/actions/inviteUsersActions";
@@ -31,6 +32,8 @@ const CreateEventForm = () => {
     submit,
     validate
   );
+
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -75,7 +78,7 @@ const CreateEventForm = () => {
         type="text"
         name="eventName"
         placeholder="Název události"
-        value={values.eventName || ""}
+        value={values.eventName || (location.state ? location.state.name : "")}
         onChange={handleChange}
         error={errors.eventName}
       />
@@ -164,7 +167,9 @@ const CreateEventForm = () => {
           }}
         />
       </GroupsWrapper>
-      <Button type="submit">Vytvořit událost</Button>
+      <Button type="submit">
+        {location.state ? "Upravit událost" : "Vytvořit událost"}
+      </Button>
     </Form>
   );
 };

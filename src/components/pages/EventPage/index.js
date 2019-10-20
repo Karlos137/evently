@@ -1,5 +1,12 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
+//action import
+import { openDelete } from "../../../store/actions/deleteActions";
+
+//react component import
+import DeleteModal from "../../DeleteModal";
 
 //styled components imports
 import Image from "./Image";
@@ -27,6 +34,8 @@ import mauritius from "../../../images/mauritius.jpeg";
 import avatarMale from "../../../images/avatar-male.svg";
 
 const EventPage = () => {
+  const isDeleteOpen = useSelector(state => state.deleteReducer);
+  const dispatch = useDispatch();
   return (
     <>
       <Image image={mauritius} />
@@ -34,8 +43,21 @@ const EventPage = () => {
         <EventInfo>
           <Name>Výlet na Mauricius</Name>
           <Icons>
-            <EditIcon />
-            <DeleteIcon />
+            <Link
+              to={{
+                pathname: "/create-event",
+                state: {
+                  name: "Výlet na Mauricius"
+                }
+              }}
+            >
+              <EditIcon />
+            </Link>
+            <DeleteIcon
+              onClick={() => {
+                dispatch(openDelete());
+              }}
+            />
           </Icons>
           <DateWrapper>
             <CalendarIcon />
@@ -66,6 +88,7 @@ const EventPage = () => {
         </EventInfo>
         <Description>Výlet do Afriky!</Description>
       </ContentWrapper>
+      {isDeleteOpen ? <DeleteModal /> : null}
     </>
   );
 };
