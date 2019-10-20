@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 //react components imports
 import Groups from "./Groups";
-import EventCard from "../../../EventCard";
+import EventList from "./EventList";
 
 //styled components import
 import Wrapper from "./Wrapper";
@@ -19,12 +19,7 @@ const Tabs = () => {
   //render content (component) based on active tab
   const renderContent = () => {
     if (tabs.events) {
-      return (
-        <>
-          <EventCard />
-          <EventCard />
-        </>
-      );
+      return <EventList />;
     } else if (tabs.groups) {
       return <Groups />;
     } else {

@@ -31,7 +31,7 @@ const App = () => {
             <Navbar />
             <MainPage />
           </Route>
-          <Route path="/profile">
+          <Route path="/profile/:id">
             <Navbar />
             <ProfilePage />
           </Route>
