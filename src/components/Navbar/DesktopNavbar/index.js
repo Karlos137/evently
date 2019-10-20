@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+
+//action import
+import { signOut } from "../../../store/actions/userActions";
+
+//firebase import
+import { auth } from "../../../firebase";
 
 //svg imports
 import { ReactComponent as Logo } from "../../../images/logo-horizontal.svg";
@@ -17,6 +24,9 @@ const DesktopNavbar = () => {
   const renderRedirect = link => {
     return <Redirect to={link} />;
   };
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   return (
     <Wrapper>
       <LogoWrapper>
@@ -55,7 +65,15 @@ const DesktopNavbar = () => {
         >
           Skupiny
         </NavLink>
-        <NavLink>Odhlásit se</NavLink>
+        <NavLink
+          onClick={() => {
+            auth.signOut();
+            dispatch(signOut());
+            history.push("/");
+          }}
+        >
+          Odhlásit se
+        </NavLink>
       </NavLinks>
       <UserProfile
         src={avatarMale}

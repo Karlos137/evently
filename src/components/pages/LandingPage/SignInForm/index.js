@@ -1,8 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+//firebase import
+import { auth } from "../../../../firebase";
+
 //action import
 import { openForgottenPassword } from "../../../../store/actions/forgottenPasswordActions";
+import { signIn } from "../../../../store/actions/userActions";
 
 //custom hook import
 import useForm from "../../../../hooks/useForm";
@@ -42,8 +46,17 @@ const SignInForm = () => {
     return errors;
   }
 
-  function submit() {
-    console.log("Úspěšně submitted.");
+  async function submit() {
+    try {
+      const user = await auth.signInWithEmailAndPassword(
+        values.email,
+        values.password
+      );
+      signIn(user);
+      console.log("Úspěšně submitted.");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
