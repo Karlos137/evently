@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 //jpeg import
 import mauritius from "../../images/mauritius.jpeg";
@@ -17,8 +18,14 @@ import UserImage from "../../shared-styled-components/UserImage";
 import TextMore from "./TextMore";
 
 const EventCard = () => {
+  const history = useHistory();
   return (
-    <Wrapper image={mauritius}>
+    <Wrapper
+      image={mauritius}
+      onClick={() => {
+        history.push("/event/1");
+      }}
+    >
       <DateInfo>
         <Day>27</Day>
         <Month>LIS</Month>

@@ -1,7 +1,7 @@
 import React from "react";
 
 //react router import
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //styled-components imports
 import { ThemeProvider } from "styled-components";
@@ -23,7 +23,7 @@ import CreateEventPage from "../pages/CreateEventPage";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <Router>
         <GlobalStyle />
         <LandingPage />
         <Switch>
@@ -60,7 +60,7 @@ const App = () => {
             <EventPage />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     </ThemeProvider>
   );
 };

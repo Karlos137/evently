@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 //react component import
 import Wrapper from "./Wrapper";
 import EventCard from "../../../../../EventCard";
 
 const EventList = props => {
-  const [heading, setHeading] = useState("");
-
   useEffect(() => {
-    if (props.all) {
-      setHeading("Všechny");
-    } else if (props.upcoming) {
-      setHeading("Nadcházející");
-    }
+    //show content based on props - TODO
   }, [props]);
 
   return (
     <Wrapper>
-      <div>{heading}</div>
       <EventCard />
       <EventCard />
       <EventCard />

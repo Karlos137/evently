@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 //styled components imports
 import Image from "./Image";
@@ -51,9 +52,15 @@ const EventPage = () => {
             </div>
           </PlaceWrapper>
           <Users>
-            <UserImage small src={avatarMale} />
-            <UserImage small src={avatarMale} />
-            <UserImage small src={avatarMale} />
+            <Link to="/profile/1">
+              <UserImage small src={avatarMale} />
+            </Link>
+            <Link to="/profile/1">
+              <UserImage small src={avatarMale} />
+            </Link>
+            <Link to="/profile/1">
+              <UserImage small src={avatarMale} />
+            </Link>
             <TextMore>+12</TextMore>
           </Users>
         </EventInfo>

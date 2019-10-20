@@ -60,7 +60,7 @@ const DesktopNavbar = () => {
       <UserProfile
         src={avatarMale}
         onClick={() => {
-          setRedirect("/profile");
+          setRedirect("/profile/1");
         }}
       />
       {redirect ? renderRedirect(redirect) : null}

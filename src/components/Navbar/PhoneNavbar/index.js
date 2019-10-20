@@ -57,7 +57,7 @@ const PhoneNavbar = () => {
           src={avatarMale}
           onClick={() => {
             dispatch(closeMenu());
-            setRedirect("/profile");
+            setRedirect("/profile/1");
           }}
         />
       </Wrapper>

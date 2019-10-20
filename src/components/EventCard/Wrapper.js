@@ -10,9 +10,7 @@ const Wrapper = styled.div`
   box-shadow: inset 0px -60px 20px rgba(34, 34, 34, 0.7);
   border-radius: 3px;
   position: relative;
-
-  @media (${props => props.theme.mediaQueries.tablet}) {
-  }
+  cursor: pointer;
 `;
 
 export default Wrapper;

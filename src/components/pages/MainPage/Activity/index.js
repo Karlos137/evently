@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 //styled components imports
 import Wrapper from "./Wrapper";
@@ -11,7 +12,9 @@ import DateInfo from "./DateInfo";
 const Activity = props => {
   return (
     <Wrapper>
-      <UserImage src={props.image} width="64px" height="64px" />
+      <Link to="/profile/1">
+        <UserImage src={props.image} width="64px" height="64px" />
+      </Link>
       <TextWrapper>
         <ActivityInfo>{props.activity}</ActivityInfo>
         <EventName>{props.event}</EventName>
