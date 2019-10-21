@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 //firebase import
@@ -29,6 +29,8 @@ const SignInForm = () => {
     validate
   );
 
+  const [authError, setAuthError] = useState(null);
+
   const dispatch = useDispatch();
 
   const isFpOpen = useSelector(state => state.forgottenPasswordReducer);
@@ -37,6 +39,7 @@ const SignInForm = () => {
 
   function validate(values) {
     let errors = {};
+    setAuthError(null);
     if (!values.email) {
       errors.email = "E-mailová adresa musí být vyplněna.";
     }
@@ -52,10 +55,28 @@ const SignInForm = () => {
         values.email,
         values.password
       );
+
+      console.log(user);
       signIn(user);
-      console.log("Úspěšně submitted.");
+      console.log("Uživatel byl úspěšně přihlášen.");
     } catch (error) {
       console.log(error);
+
+      if (error.code === "auth/wrong-password") {
+        setAuthError("Zadal jsi nesprávné heslo.");
+      }
+
+      if (error.code === "auth/user-not-found") {
+        setAuthError(
+          `Uživatel s e-mailovou adresou ${values.email} nebyl nalezen.`
+        );
+      }
+
+      if (error.code === "auth/too-many-requests") {
+        setAuthError(
+          "Příliš mnoho neúspěšných přihlášení. Zkus se přihlásit později."
+        );
+      }
     }
   }
 
@@ -83,6 +104,7 @@ const SignInForm = () => {
         {errors.password && (
           <FormErrorMessage>{errors.password}</FormErrorMessage>
         )}
+        {authError && <FormErrorMessage>{authError}</FormErrorMessage>}
         <PasswordText
           onClick={() => {
             dispatch(openForgottenPassword());

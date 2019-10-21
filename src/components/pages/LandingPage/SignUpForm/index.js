@@ -48,7 +48,7 @@ const SignUpForm = () => {
   }
 
   function submit() {
-    console.log("Úspěšně submitted.");
+    console.log("Uživatel byl úspěšně zaregistrován.");
   }
 
   return (
