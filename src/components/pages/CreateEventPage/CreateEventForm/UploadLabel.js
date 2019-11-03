@@ -15,8 +15,6 @@ const UploadLabel = styled.label`
   border: none;
   cursor: pointer;
   color: white;
-  pointer-events: none;
-  opacity: 0.5;
   ${props => (props.disabled ? disabled : null)}
 `;
 
