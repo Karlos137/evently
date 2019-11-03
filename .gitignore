@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
+/server/serviceAccountKey.json
 .pnp.js
 
 # testing

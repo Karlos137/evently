@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router";
 
+//firebase auth import
+import { auth } from "../../../firebase";
+
 //actions imports
 import { openMenu, closeMenu } from "../../../store/actions/menuActions";
 
@@ -57,7 +60,7 @@ const PhoneNavbar = () => {
           src={avatarMale}
           onClick={() => {
             dispatch(closeMenu());
-            setRedirect("/profile/1");
+            setRedirect(`/profile/${auth.currentUser.uid}`);
           }}
         />
       </Wrapper>

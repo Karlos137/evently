@@ -26,7 +26,7 @@ const useForm = (callback, validate) => {
     setIsSubmit(true);
   };
 
-  return { values, errors, handleChange, handleSubmit };
+  return { values, setValues, errors, handleChange, handleSubmit };
 };
 
 export default useForm;

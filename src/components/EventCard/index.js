@@ -1,9 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-//jpeg import
-import mauritius from "../../images/mauritius.jpeg";
-
 //svg import
 import avatarMale from "../../images/avatar-male.svg";
 
@@ -17,26 +14,33 @@ import Users from "./Users";
 import UserImage from "../../shared-styled-components/UserImage";
 import TextMore from "./TextMore";
 
-const EventCard = () => {
+const EventCard = props => {
   const history = useHistory();
+
   return (
     <Wrapper
-      image={mauritius}
+      image={props.image}
       onClick={() => {
-        history.push("/event/1");
+        history.push(`/event/${props.id}`);
       }}
     >
       <DateInfo>
-        <Day>27</Day>
-        <Month>LIS</Month>
+        <Day>{props.dayOfMonth}</Day>
+        <Month>{props.month}</Month>
       </DateInfo>
-      <Name>Výlet na Mauricius</Name>
+      <Name>{props.name}</Name>
       <Users>
-        <UserImage small src={avatarMale} />
-        <UserImage small src={avatarMale} />
-        <UserImage small src={avatarMale} />
+        {props.users.map((user, index) => {
+          if (index < 3) {
+            return <UserImage key={user} small src={avatarMale} />;
+          } else {
+            return null;
+          }
+        })}
       </Users>
-      <TextMore>+12</TextMore>
+      {props.users.length > 3 ? (
+        <TextMore>+ {props.users.length - 3}</TextMore>
+      ) : null}
     </Wrapper>
   );
 };

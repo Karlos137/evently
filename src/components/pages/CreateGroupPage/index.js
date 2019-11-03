@@ -1,6 +1,7 @@
 import React from "react";
 import Media from "react-media";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 //react components imports
 import CreateGroupForm from "./CreateGroupForm";
@@ -18,15 +19,19 @@ import createGroupIlu from "../../../images/illustrations/create-group-ilu.svg";
 const CreateGroupPage = () => {
   const isInviteUsersOpen = useSelector(state => state.inviteUsersReducer);
 
+  const location = useLocation();
+
   return (
     <Wrapper>
       <Media query="(min-width: 1024px)">
         {matches => (matches ? <CreateGroupIlu src={createGroupIlu} /> : null)}
       </Media>
       <ContentWrapper>
-        <Heading>Vytvořit skupinu</Heading>
+        <Heading>
+          {location.state ? "Upravit skupinu" : "Vytvořit skupinu"}
+        </Heading>
         <CreateGroupForm />
-        {isInviteUsersOpen ? <InviteUsersModal /> : null}
+        {isInviteUsersOpen ? <InviteUsersModal group /> : null}
       </ContentWrapper>
     </Wrapper>
   );

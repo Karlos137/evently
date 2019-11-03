@@ -2,6 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import axios from "axios";
+
+import { auth } from "../../firebase";
+
 //action import
 import { closeDelete } from "../../store/actions/deleteActions";
 
@@ -17,7 +21,19 @@ const DeleteModal = props => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
+    if (props.event) {
+      await axios.delete(`/api/event/${props.id}`);
+      await axios.patch("/api/user/create/event/remove", {
+        userId: auth.currentUser.uid,
+        eventId: props.id
+      });
+    }
+
+    if (props.group) {
+      await axios.delete(`/api/group/${props.id}`);
+    }
+
     dispatch(closeDelete());
     history.push("/main");
   };

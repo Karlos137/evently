@@ -9,7 +9,11 @@ const SearchBar = props => {
   return (
     <Wrapper modal={props.modal}>
       <SearchIcon />
-      <StyledInputField placeholder={props.placeholder} />
+      <StyledInputField
+        onChange={props.change}
+        value={props.value}
+        placeholder={props.placeholder}
+      />
     </Wrapper>
   );
 };

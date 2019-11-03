@@ -26,7 +26,7 @@ const Tabs = () => {
     if (tabs.all) {
       return <EventList all />;
     } else if (tabs.created) {
-      return <EventList creeated />;
+      return <EventList created />;
     } else if (tabs.upcoming) {
       return <EventList upcoming />;
     } else if (tabs.past) {

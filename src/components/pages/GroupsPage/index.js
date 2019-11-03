@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Media from "react-media";
 
@@ -13,11 +14,56 @@ import GroupsWrapper from "./GroupsWrapper";
 import Group from "../../Group";
 import GroupsIluWrapper from "./GroupsIluWrapper";
 import GroupsIlu from "./GroupsIlu";
+import GroupLink from "./GroupLink";
+import Loading from "../../../shared-styled-components/Loading";
+import LoadingWrapper from "../../../shared-styled-components/LoadingWrapper";
 
-//svg import
+//svg imports
 import groupsIlu from "../../../images/illustrations/groups-ilu.svg";
+import loadingIcon from "../../../images/loading.svg";
 
 const GroupsPage = () => {
+  const [groups, setGroups] = useState([]);
+  const [filterText, setFilterText] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getGroups = async () => {
+      const response = await axios.get("/api/groups");
+      let groupsFs = [];
+      groupsFs = response.data.map(group => {
+        return (
+          <GroupLink to={`group/${group.id}`} key={group.id}>
+            <Group name={group.name} />
+          </GroupLink>
+        );
+      });
+      setGroups(groupsFs);
+      setLoading(false);
+    };
+
+    getGroups();
+  }, []);
+
+  const handleFilter = e => {
+    setFilterText(e.target.value);
+  };
+
+  const renderGroups = () => {
+    if (filterText === "") {
+      return groups;
+    } else {
+      const filteredGroups = groups.filter(group => {
+        return group.props.children.props.name.indexOf(filterText) !== -1;
+      });
+      if (Array.isArray(filteredGroups) && filteredGroups.length) {
+        return filteredGroups;
+      } else {
+        return null;
+      }
+    }
+  };
+
   return (
     <Wrapper>
       <ContentWrapper>
@@ -27,11 +73,19 @@ const GroupsPage = () => {
             <AddIcon />
           </Link>
         </Heading>
-        <SearchBar placeholder="Hledej skupiny" />
+        <SearchBar
+          change={handleFilter}
+          value={filterText}
+          placeholder="Hledej skupiny"
+        />
         <GroupsWrapper>
-          <Group name="Testing team" />
-          <Group name="FunFunFun" />
-          <Group name="Developers" />
+          {loading ? (
+            <LoadingWrapper>
+              <Loading src={loadingIcon} />
+            </LoadingWrapper>
+          ) : (
+            <> {renderGroups() || <p>Žádné skupiny k zobrazení</p>} </>
+          )}
         </GroupsWrapper>
       </ContentWrapper>
       <Media query="(min-width: 1200px)">

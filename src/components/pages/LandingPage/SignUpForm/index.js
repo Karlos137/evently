@@ -1,5 +1,11 @@
 import React from "react";
 
+//axios import
+import axios from "axios";
+
+//firebase import
+import { auth } from "../../../../firebase";
+
 //custom hook import
 import useForm from "../../../../hooks/useForm";
 
@@ -47,8 +53,21 @@ const SignUpForm = () => {
     return errors;
   }
 
-  function submit() {
-    console.log("Uživatel byl úspěšně zaregistrován.");
+  async function submit() {
+    try {
+      const cred = await auth.createUserWithEmailAndPassword(
+        values.email,
+        values.password
+      );
+      await axios.post("/api/registration", {
+        id: cred.user.uid,
+        name: values.name,
+        email: values.email
+      });
+      console.log("Uživatel byl úspěšně zaregistrován.", cred);
+    } catch (error) {
+      console.log(`Při registraci nastala chyba: ${error}`);
+    }
   }
 
   return (

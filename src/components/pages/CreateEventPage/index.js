@@ -33,7 +33,7 @@ const CreateEventPage = () => {
           {location.state ? "Upravit událost" : "Vytvořit událost"}
         </Heading>
         <CreateEventForm />
-        {isInviteUsersOpen ? <InviteUsersModal /> : null}
+        {isInviteUsersOpen ? <InviteUsersModal event /> : null}
         {isInviteGroupsOpen ? <InviteGroupsModal /> : null}
       </ContentWrapper>
     </Wrapper>

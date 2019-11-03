@@ -8,6 +8,8 @@ import inviteUsersReducer from "./inviteUsersReducer";
 import inviteGroupsReducer from "./inviteGroupsReducer";
 import deleteReducer from "./deleteReducer";
 import userReducer from "./userReducer";
+import groupInvitedUsersReducer from "./groupInvitedUsersReducer";
+import eventInvitedUsersReducer from "./eventInvitedUsersReducer";
 
 const rootReducer = combineReducers({
   forgottenPasswordReducer,
@@ -16,7 +18,9 @@ const rootReducer = combineReducers({
   inviteUsersReducer,
   inviteGroupsReducer,
   deleteReducer,
-  userReducer
+  userReducer,
+  groupInvitedUsersReducer,
+  eventInvitedUsersReducer
 });
 
 export default rootReducer;
