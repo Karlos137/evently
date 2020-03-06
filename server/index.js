@@ -6,6 +6,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 //middleware
+app.use(express.json());
 
 app.listen(port, () => {
   console.log(`Listenning on port ${port}...`);
@@ -19,7 +20,7 @@ app.get("/api/events", (req, res) => {
   db.execute(sql)
     .then(result => {
       console.log(result[0][0]);
-      res.send("Test db");
+      res.json(result);
     })
     .catch(err => {
       console.log(err);
