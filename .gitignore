@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/server/node_modules
 /.pnp
 /server/serviceAccountKey.json
 .pnp.js
