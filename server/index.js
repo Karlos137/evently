@@ -19,7 +19,7 @@ app.get("/api/events", (req, res) => {
   db.execute(sql)
     .then(result => {
       console.log(result[0][0]);
-      res.send("test");
+      res.send("Test db");
     })
     .catch(err => {
       console.log(err);
