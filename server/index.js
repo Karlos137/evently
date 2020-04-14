@@ -22,12 +22,62 @@ app.listen(port, () => {
 
 //GET - all groups
 app.get("/api/groups", (req, res) => {
-  const cypher = "MATCH (n) RETURN n";
+  const cypher = "MATCH (n:Group) RETURN n";
 
   session
     .run(cypher)
     .then((result) => {
       res.json(result.records);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+//POST - create event
+app.post("/api/event", (req, res) => {
+  const cypher = `MATCH (a:User) WHERE ID(a) = ${
+    req.body.createdBy
+  } CREATE (n:Event { name: "${req.body.name}", image: "${
+    req.body.image
+  }", description: "${req.body.description}", location: "${
+    req.body.location
+  }" , date: datetime("${new Date().toJSON()}") , dateCreated: datetime("${new Date(
+    req.body.date
+  ).toJSON()}")}) -[r:CREATED_BY]-> (a) RETURN (n)`;
+
+  session
+    .run(cypher)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+//DELETE - delete group
+app.delete("/api/group/:id", (req, res) => {
+  const cypher = `MATCH (n:Group) WHERE ID(n) = ${req.params.id} DETACH DELETE n`;
+
+  session
+    .run(cypher)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+//PATCH - group edit
+app.patch("/api/edit/group", (req, res) => {
+  const cypher = `MATCH (n:Group) WHERE ID(n) = ${req.body.id} SET n.name = "${req.body.name}" RETURN n`;
+
+  session
+    .run(cypher)
+    .then((result) => {
+      res.json(result);
     })
     .catch((err) => {
       res.send(err);
