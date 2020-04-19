@@ -25,9 +25,9 @@ import avatarMale from "../../../images/avatar-male.svg";
 const PhoneNavbar = () => {
   const [redirect, setRedirect] = useState("");
   const dispatch = useDispatch();
-  const isMenuOpen = useSelector(state => state.menuReducer);
+  const isMenuOpen = useSelector((state) => state.menuReducer);
 
-  const renderRedirect = link => {
+  const renderRedirect = (link) => {
     return <Redirect to={link} />;
   };
 

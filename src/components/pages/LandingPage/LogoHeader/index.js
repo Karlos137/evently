@@ -11,7 +11,7 @@ const LogoHeader = () => {
   return (
     <Wrapper>
       <Logo />
-      <Text>Webová aplikace pro vytváření událostí</Text>
+      <Text grey>Webová aplikace pro vytváření událostí</Text>
     </Wrapper>
   );
 };
