@@ -1,4 +1,6 @@
-Webová aplikace pro správu událostí.
+# Evently
+
+## Webová aplikace pro správu událostí.
 
 Vytvořeno jako součást diplomové práce.
 
