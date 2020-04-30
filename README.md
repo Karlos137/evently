@@ -4,6 +4,6 @@
 
 Vytvořeno jako součást diplomové práce.
 
-Author: Karel Kvítek
+* *Author: Karel Kvítek
 
-License: MIT
+* *License: MIT
