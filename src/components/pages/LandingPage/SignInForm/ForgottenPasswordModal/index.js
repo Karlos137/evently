@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 //action import
@@ -17,12 +17,15 @@ import Modal from "../../../../../shared-styled-components/Modal";
 import ModalTitle from "../../../../../shared-styled-components/ModalTitle";
 import Text from "./Text";
 import Form from "./Form";
+import FormSuccessMessage from "../../../../../shared-styled-components/FormSuccessMessage";
 
 const ForgottenPasswordModal = () => {
   const { values, errors, handleChange, handleSubmit } = useForm(
     submit,
     validate
   );
+
+  const [successMsg, setSuccessMsg] = useState("");
 
   const dispatch = useDispatch();
 
@@ -38,12 +41,18 @@ const ForgottenPasswordModal = () => {
 
   function submit() {
     console.log("Úspěšně submitted.");
+    setSuccessMsg(
+      "V případě zadání registrované e-mailové adresy byl zaslán obnovovací e-mail."
+    );
+    setTimeout(() => {
+      dispatch(closeForgottenPassword());
+    }, 4000);
   }
 
   return (
     <ModalWrapper
       id="close"
-      onClick={e => {
+      onClick={(e) => {
         //only close when clicking on this element
         if (e.target.id === "close") {
           dispatch(closeForgottenPassword());
@@ -61,6 +70,12 @@ const ForgottenPasswordModal = () => {
           Pokud jsi zapomněl své heslo, zadej prosím e-mailovou adresu, kterou
           jsi uvedl při registraci. <br />
           Pošleme ti na ni instrukce pro nastavení nového hesla.
+          <br />
+          <em style={{ fontSize: "11px" }}>
+            Slouží pouze pro ukázku funkcionality modálního okna se vstupním
+            polem.
+          </em>
+          <br />
         </Text>
         <Form onSubmit={handleSubmit} noValidate>
           <InputField
@@ -72,6 +87,9 @@ const ForgottenPasswordModal = () => {
             placeholder="Email"
           />
           {errors.email && <FormErrorMessage>{errors.email}</FormErrorMessage>}
+          {successMsg === "" ? null : (
+            <FormSuccessMessage>{successMsg}</FormSuccessMessage>
+          )}
           <Button>Odeslat</Button>
         </Form>
       </Modal>
