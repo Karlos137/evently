@@ -2,10 +2,10 @@
   <img width="340" height="216" src="https://github.com/Karlos137/evently/blob/master/src/images/logo-vertical.svg">
 </p>
 
-### Webová aplikace pro správu událostí
+<h3 align="center">Webová aplikace pro správu událostí</h3>
 
-Vytvořeno jako součást diplomové práce.
+<p align="center"><em>Vytvořeno jako součást diplomové práce.</em></p>
 
-*Author: Karel Kvítek*
+<p><em>Author: Karel Kvítek</em></p>
+<p><em>License: MIT</em></p>
 
-*License: MIT*
