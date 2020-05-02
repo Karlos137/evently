@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="340" height="216" src="https://github.com/Karlos137/evently/blob/master/src/images/logo-vertical.svg">
+  <img width="260" height="166" src="https://github.com/Karlos137/evently/blob/master/src/images/logo-vertical.svg">
 </p>
 
 <h3 align="center">Webová aplikace pro správu událostí</h3>
