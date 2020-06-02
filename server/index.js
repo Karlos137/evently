@@ -71,7 +71,7 @@ app.delete("/api/group/:id", (req, res) => {
 });
 
 //PATCH - group edit
-app.patch("/api/edit/group", (req, res) => {
+app.patch("/api/group", (req, res) => {
   const cypher = `MATCH (n:Group) WHERE ID(n) = ${req.body.id} SET n.name = "${req.body.name}" RETURN n`;
 
   session

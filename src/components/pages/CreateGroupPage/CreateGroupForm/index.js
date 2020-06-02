@@ -31,7 +31,7 @@ const CreateGroupForm = () => {
     submit,
     validate
   );
-  const invitedUsers = useSelector(state => state.groupInvitedUsersReducer);
+  const invitedUsers = useSelector((state) => state.groupInvitedUsersReducer);
   const [successMsg, setSuccessMsg] = useState("");
 
   const location = useLocation();
@@ -52,14 +52,14 @@ const CreateGroupForm = () => {
     try {
       setSuccessMsg("");
       if (location.state) {
-        await axios.patch("/api/edit/group", {
+        await axios.patch("/api/group", {
           id: location.state.id,
-          name: values.groupName
+          name: values.groupName,
         });
-        await invitedUsers.forEach(user => {
+        await invitedUsers.forEach((user) => {
           axios.patch("/api/user/invite/group/add", {
             userId: user.id,
-            group: { id: location.state.id, name: values.groupName }
+            group: { id: location.state.id, name: values.groupName },
           });
         });
         location.state.name = values.groupName;
@@ -68,12 +68,12 @@ const CreateGroupForm = () => {
         const response = await axios.post("/api/group", {
           name: values.groupName,
           users: [auth.currentUser.uid],
-          createdBy: auth.currentUser.uid
+          createdBy: auth.currentUser.uid,
         });
-        await invitedUsers.forEach(user => {
+        await invitedUsers.forEach((user) => {
           axios.patch("/api/user/invite/group/add", {
             userId: user.id,
-            group: { id: response.data, name: values.groupName }
+            group: { id: response.data, name: values.groupName },
           });
         });
 
@@ -113,7 +113,7 @@ const CreateGroupForm = () => {
             dispatch(openInviteUsers());
           }}
         />
-        {invitedUsers.map(user => {
+        {invitedUsers.map((user) => {
           return (
             <StyledLink key={user.id} to={`/profile/${user.id}`}>
               <InvitedUser>{user.name}</InvitedUser>

@@ -43,7 +43,7 @@ const CreateEventForm = () => {
 
   const [image, setImage] = useState(null);
 
-  const invitedUsers = useSelector(state => state.eventInvitedUsersReducer);
+  const invitedUsers = useSelector((state) => state.eventInvitedUsersReducer);
   const [successMsg, setSuccessMsg] = useState("");
 
   const location = useLocation();
@@ -83,25 +83,22 @@ const CreateEventForm = () => {
     try {
       setSuccessMsg("");
       if (image !== null) {
-        await storage
-          .ref()
-          .child(`images/${image.name}`)
-          .put(image);
+        await storage.ref().child(`images/${image.name}`).put(image);
       }
 
       if (location.state) {
-        await axios.patch("/api/edit/event", {
+        await axios.patch("/api/event", {
           id: location.state.id,
           name: values.eventName,
           location: values.place,
           date: `${values.date}T${values.time}`,
-          description: values.description
+          description: values.description,
         });
 
-        await invitedUsers.forEach(user => {
+        await invitedUsers.forEach((user) => {
           axios.patch("/api/user/invite/event/add", {
             userId: user.id,
-            event: { id: location.state.id, name: values.eventName }
+            event: { id: location.state.id, name: values.eventName },
           });
         });
 
@@ -110,7 +107,7 @@ const CreateEventForm = () => {
           description: values.description,
           date: values.date,
           time: values.time,
-          place: values.place
+          place: values.place,
         };
 
         setSuccessMsg("Událost úspěšně upravena");
@@ -124,13 +121,13 @@ const CreateEventForm = () => {
             ? `https://firebasestorage.googleapis.com/v0/b/evently-cfb26.appspot.com/o/images%2F${image.name}?alt=media`
             : "https://images.unsplash.com/photo-1572649296821-441d570ae49e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
           createdBy: auth.currentUser.uid,
-          users: [auth.currentUser.uid]
+          users: [auth.currentUser.uid],
         });
 
-        await invitedUsers.forEach(user => {
+        await invitedUsers.forEach((user) => {
           axios.patch("/api/user/invite/event/add", {
             userId: user.id,
-            event: { id: response.data, name: values.eventName }
+            event: { id: response.data, name: values.eventName },
           });
         });
 
@@ -142,23 +139,23 @@ const CreateEventForm = () => {
           eventName: values.eventName,
           eventId: response.data,
           user: user.data.name,
-          for: null
+          for: null,
         });
 
         await axios.patch("/api/user/create/event/add", {
           userId: auth.currentUser.uid,
-          eventId: response.data
+          eventId: response.data,
         });
 
         if (Array.isArray(invitedUsers) && invitedUsers.length) {
-          const invitedUsersIds = invitedUsers.map(user => user.id);
+          const invitedUsersIds = invitedUsers.map((user) => user.id);
           await axios.post("/api/activity", {
             type: "invite",
             text: "tě pozval na událost!",
             eventName: values.eventName,
             eventId: response.data,
             user: user.data.name,
-            for: invitedUsersIds
+            for: invitedUsersIds,
           });
         }
         setSuccessMsg("Událost úspěšně vytvořena");
@@ -173,7 +170,7 @@ const CreateEventForm = () => {
         place: "",
         date: "",
         time: "",
-        description: ""
+        description: "",
       });
       setImage(null);
       dispatch(removeEventUsers());
@@ -183,7 +180,7 @@ const CreateEventForm = () => {
     }
   }
 
-  const handleImageChange = e => {
+  const handleImageChange = (e) => {
     setImage(e.target.files[0]);
   };
 
@@ -294,7 +291,7 @@ const CreateEventForm = () => {
             dispatch(openInviteGroups());
           }}
         />
-        {invitedUsers.map(user => {
+        {invitedUsers.map((user) => {
           return (
             <StyledLink key={user.id} to={`/profile/${user.id}`}>
               <InvitedUser>{user.name}</InvitedUser>
