@@ -12,5 +12,9 @@
 
 <p>Po lokální konfiguraci připojení k databázi (v případě Firestore definice proměnných prostředí a vytvoření konfiguračního souboru <em>serviceAccountKey.json</em>) je možné v adresáři <em>/server/</em> spustit projekt pomocí příkazu <code>npm run dev</code>.</p>
 
+<p>Hlavní větev (<em>master</em> ) obsahuje implementaci s pomocí databáze Firestore.</p>
+<p>Větev <em>sql</em> obsahuje několik ukázkových routes a způsob konfigurace připojení k lokální MySQL databázi.</p>
+<p>Větev <em>graph</em> obsahuje několik ukázkových routes a způsob konfigurace připojení k lokální Neo4j databázi.</p>
+
 <p><em>Author: Karel Kvítek</em></p>
 <p><em>License: MIT</em></p>
