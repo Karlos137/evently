@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Media from "react-media";
+import { breakpoints } from "../../../../utils/responsiveHelpers";
 
 //action import
 import { openActivity } from "../../../../store/actions/activityActions";
@@ -18,7 +19,7 @@ import AddIcon from "../../../../shared-styled-components/AddIcon";
 import BellIcon from "./BellIcon";
 
 const Events = () => {
-  const isActivityOpen = useSelector(state => state.activityReducer);
+  const isActivityOpen = useSelector((state) => state.activityReducer);
   const dispatch = useDispatch();
 
   return (
@@ -29,8 +30,8 @@ const Events = () => {
           <AddIcon />
         </Link>
       </Heading>
-      <Media query="(min-width: 1024px)">
-        {matches =>
+      <Media query={`(${breakpoints.desktop})`}>
+        {(matches) =>
           matches ? null : (
             <BellIcon
               onClick={() => {

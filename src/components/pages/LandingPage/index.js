@@ -1,4 +1,5 @@
 import React from "react";
+import { breakpoints } from "../../../utils/responsiveHelpers";
 
 //react-media import
 import Media from "react-media";
@@ -35,7 +36,7 @@ const LandingPage = () => {
                   <SignInForm />
                 </FormWrapper>
                 <Media
-                  query="(min-width: 1024px)"
+                  query={`(${breakpoints.largeDesktop})`}
                   render={() => {
                     return (
                       <SignInIlluWrapper>
@@ -59,7 +60,7 @@ const LandingPage = () => {
                   <SignUpForm />
                 </FormWrapper>
                 <Media
-                  query="(min-width: 1024px)"
+                  query={`(${breakpoints.desktop})`}
                   render={() => {
                     return (
                       <SignUpIlluWrapper>

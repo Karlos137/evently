@@ -2,6 +2,7 @@ import React from "react";
 import Media from "react-media";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { breakpoints } from "../../../utils/responsiveHelpers";
 
 //react components imports
 import CreateGroupForm from "./CreateGroupForm";
@@ -17,14 +18,16 @@ import ContentWrapper from "./ContentWrapper";
 import createGroupIlu from "../../../images/illustrations/create-group-ilu.svg";
 
 const CreateGroupPage = () => {
-  const isInviteUsersOpen = useSelector(state => state.inviteUsersReducer);
+  const isInviteUsersOpen = useSelector((state) => state.inviteUsersReducer);
 
   const location = useLocation();
 
   return (
     <Wrapper>
-      <Media query="(min-width: 1024px)">
-        {matches => (matches ? <CreateGroupIlu src={createGroupIlu} /> : null)}
+      <Media query={`(${breakpoints.desktop})`}>
+        {(matches) =>
+          matches ? <CreateGroupIlu src={createGroupIlu} /> : null
+        }
       </Media>
       <ContentWrapper>
         <Heading>

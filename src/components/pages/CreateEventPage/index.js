@@ -2,6 +2,7 @@ import React from "react";
 import Media from "react-media";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { breakpoints } from "../../../utils/responsiveHelpers";
 
 //react component import
 import CreateEventForm from "./CreateEventForm";
@@ -18,15 +19,17 @@ import CreateEventIlu from "./CreateEventIlu";
 import createEventIlu from "../../../images/illustrations/create-event-ilu.svg";
 
 const CreateEventPage = () => {
-  const isInviteUsersOpen = useSelector(state => state.inviteUsersReducer);
-  const isInviteGroupsOpen = useSelector(state => state.inviteGroupsReducer);
+  const isInviteUsersOpen = useSelector((state) => state.inviteUsersReducer);
+  const isInviteGroupsOpen = useSelector((state) => state.inviteGroupsReducer);
 
   const location = useLocation();
 
   return (
     <Wrapper>
-      <Media query="(min-width: 1024px)">
-        {matches => (matches ? <CreateEventIlu src={createEventIlu} /> : null)}
+      <Media query={`(${breakpoints.desktop})`}>
+        {(matches) =>
+          matches ? <CreateEventIlu src={createEventIlu} /> : null
+        }
       </Media>
       <ContentWrapper>
         <Heading>

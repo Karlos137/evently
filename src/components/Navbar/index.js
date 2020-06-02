@@ -1,5 +1,7 @@
 import React from "react";
 
+import { breakpoints } from "../../utils/responsiveHelpers";
+
 //react-media import
 import Media from "react-media";
 
@@ -10,8 +12,8 @@ import DesktopNavbar from "./DesktopNavbar";
 const Navbar = () => {
   return (
     <>
-      <Media query="(min-width: 1200px)">
-        {matches => (matches ? <DesktopNavbar /> : <PhoneNavbar />)}
+      <Media query={`(${breakpoints.largeDesktop})`}>
+        {(matches) => (matches ? <DesktopNavbar /> : <PhoneNavbar />)}
       </Media>
     </>
   );

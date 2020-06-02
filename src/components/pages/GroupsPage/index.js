@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Media from "react-media";
+import { breakpoints } from "../../../utils/responsiveHelpers";
 
 //styled components imports
 import Wrapper from "./Wrapper";
@@ -31,7 +32,7 @@ const GroupsPage = () => {
     const getGroups = async () => {
       const response = await axios.get("/api/groups");
       let groupsFs = [];
-      groupsFs = response.data.map(group => {
+      groupsFs = response.data.map((group) => {
         return (
           <GroupLink to={`group/${group.id}`} key={group.id}>
             <Group name={group.name} />
@@ -45,7 +46,7 @@ const GroupsPage = () => {
     getGroups();
   }, []);
 
-  const handleFilter = e => {
+  const handleFilter = (e) => {
     setFilterText(e.target.value);
   };
 
@@ -53,7 +54,7 @@ const GroupsPage = () => {
     if (filterText === "") {
       return groups;
     } else {
-      const filteredGroups = groups.filter(group => {
+      const filteredGroups = groups.filter((group) => {
         return group.props.children.props.name.indexOf(filterText) !== -1;
       });
       if (Array.isArray(filteredGroups) && filteredGroups.length) {
@@ -88,8 +89,8 @@ const GroupsPage = () => {
           )}
         </GroupsWrapper>
       </ContentWrapper>
-      <Media query="(min-width: 1200px)">
-        {matches =>
+      <Media query={`(${breakpoints.largeDesktop})`}>
+        {(matches) =>
           matches ? (
             <GroupsIluWrapper>
               <GroupsIlu src={groupsIlu} />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Media from "react-media";
+import { breakpoints } from "../../../utils/responsiveHelpers";
 
 //styled components imports
 import Wrapper from "./Wrapper";
@@ -28,7 +29,7 @@ const UsersPage = () => {
     const getUsers = async () => {
       const response = await axios.get("/api/users");
       let usersFs = [];
-      usersFs = response.data.map(user => {
+      usersFs = response.data.map((user) => {
         return (
           <StyledLink key={user.id} to={`/profile/${user.id}`}>
             <User name={user.name} email={user.email} />
@@ -42,7 +43,7 @@ const UsersPage = () => {
     getUsers();
   }, []);
 
-  const handleFilter = e => {
+  const handleFilter = (e) => {
     setFilterText(e.target.value);
   };
 
@@ -50,7 +51,7 @@ const UsersPage = () => {
     if (filterText === "") {
       return users;
     } else {
-      const filteredUsers = users.filter(user => {
+      const filteredUsers = users.filter((user) => {
         return (
           user.props.children.props.name.indexOf(filterText) !== -1 ||
           user.props.children.props.email.indexOf(filterText) !== -1
@@ -83,8 +84,8 @@ const UsersPage = () => {
           )}
         </UsersWrapper>
       </ContentWrapper>
-      <Media query="(min-width: 1200px)">
-        {matches =>
+      <Media query={`(${breakpoints.desktop})`}>
+        {(matches) =>
           matches ? (
             <UsersIluWrapper>
               <UsersIlu src={usersIlu} />
