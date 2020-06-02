@@ -77,7 +77,7 @@ app.delete("/api/group/:id", (req, res) => {
 });
 
 //PATCH - group edit
-app.patch("/api/edit/group", (req, res) => {
+app.patch("/api/group", (req, res) => {
   const sql = `UPDATE evently.groups SET \`name\`="${req.body.name}" WHERE \`id\`="${req.body.id}"`;
 
   db.execute(sql)
