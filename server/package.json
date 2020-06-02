@@ -8,7 +8,7 @@
     "dev": "concurrently \"nodemon index\" \"cd .. && npm start\""
   },
   "author": "Karel Kvítek",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "concurrently": "^5.2.0",
     "express": "^4.17.1",
