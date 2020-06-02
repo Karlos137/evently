@@ -59,10 +59,10 @@ const SignUpForm = () => {
         values.email,
         values.password
       );
-      await axios.post("/api/registration", {
+      await axios.post("/api/user", {
         id: cred.user.uid,
         name: values.name,
-        email: values.email
+        email: values.email,
       });
       console.log("Uživatel byl úspěšně zaregistrován.", cred);
     } catch (error) {

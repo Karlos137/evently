@@ -428,7 +428,7 @@ app.get("/api/user/:id", async (req, res) => {
 });
 
 //POST - registration - create user
-app.post("/api/registration", (req, res) => {
+app.post("/api/user", (req, res) => {
   db.collection("users")
     .doc(req.body.id)
     .set({
