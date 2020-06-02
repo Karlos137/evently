@@ -14,18 +14,18 @@ import Wrapper from "./Wrapper";
 //import loading svg
 import loadingIcon from "../../../../../../images/loading.svg";
 
-const EventList = props => {
+const EventList = (props) => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const handleResponse = response => {
+  const handleResponse = (response) => {
     if (
       Object.entries(response.data).length === 0 &&
       response.data.constructor === Object
     ) {
       setEvents([]);
     } else {
-      let eventsFs = response.data.map(event => {
+      let eventsFs = response.data.map((event) => {
         const [dayOfMonth, month] = convertFsDate(event.date._seconds);
         return (
           <EventCard
@@ -45,7 +45,7 @@ const EventList = props => {
   };
 
   //to convert date from Firestore
-  const convertFsDate = fsDate => {
+  const convertFsDate = (fsDate) => {
     //date from seconds
     const date = new Date(1000 * fsDate);
 
@@ -116,7 +116,7 @@ const EventList = props => {
 
       if (props.created) {
         const response = await axios.post("/api/events/created", {
-          id: auth.currentUser.uid
+          id: auth.currentUser.uid,
         });
         handleResponse(response);
       }

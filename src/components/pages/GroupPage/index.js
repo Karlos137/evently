@@ -30,7 +30,7 @@ import StyledLink from "../../../shared-styled-components/StyledLink";
 import User from "../../User";
 
 const GroupPage = () => {
-  const isDeleteOpen = useSelector(state => state.deleteReducer);
+  const isDeleteOpen = useSelector((state) => state.deleteReducer);
   const dispatch = useDispatch();
   const [group, setGroup] = useState({});
   const [users, setUsers] = useState([]);
@@ -47,10 +47,11 @@ const GroupPage = () => {
       setGroup(groupResponse.data);
 
       const usersResponse = await axios.post("/api/users", {
-        users: groupResponse.data.users
+        users: groupResponse.data.users,
       });
+      console.log(usersResponse);
       let usersFs = [];
-      usersFs = usersResponse.data.map(user => {
+      usersFs = usersResponse.data.map((user) => {
         return (
           <StyledLink key={user.id} to={`/profile/${user.id}`}>
             <User name={user.name} email={user.email} />
@@ -78,8 +79,8 @@ const GroupPage = () => {
                   pathname: "/create-group",
                   state: {
                     id: id,
-                    name: group.name
-                  }
+                    name: group.name,
+                  },
                 }}
               >
                 <EditIcon />
