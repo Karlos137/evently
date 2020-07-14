@@ -4,7 +4,6 @@
 
 <h3 align="center">Webová aplikace pro správu událostí</h3>
 
-<p align="center"><em>Vytvořeno jako součást diplomové práce.</em></p>
 <br>
 <p><em>Node.js verze použitá při vývoji: v12.16.1</em></p>
 <br>
